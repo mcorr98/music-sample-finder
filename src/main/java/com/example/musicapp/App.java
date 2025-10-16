@@ -12,7 +12,7 @@ public class App
 {
     public static void main( String[] args )
     {
-    	TrackRepository repo = new CsvTrackRepository("src/main/resources/tracks.csv");
+    	TrackRepository repo = new CsvTrackRepository();
     	TrackService service = new TrackService(repo.findAll());
     	
         System.out.println( "Crate digger starting..." );

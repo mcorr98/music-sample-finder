@@ -14,6 +14,15 @@ public class Track {
 	private double bpm;
 	private int year;
 	
+	//Constructor
+		public Track(String artist, String title, String genre, double bpm, int year) {
+			this.artist = artist;
+			this.title = title;
+			this.genre = genre;
+			this.bpm = bpm;
+			this.year = year;
+		} 
+	
 	//Getters and setters 
 	public String getArtist() {
 		return artist;
@@ -46,13 +55,10 @@ public class Track {
 		this.year = year;
 	}
 	
-	//Constructor
-	public Track(String artist, String title, String genre, double bpm, int year) {
-		this.artist = artist;
-		this.title = title;
-		this.genre = genre;
-		this.bpm = bpm;
-		this.year = year;
-	} 
+	@Override
+    public String toString() {
+        return String.format("%s by %s [%s, %.1f BPM, %d]",
+                title, artist, genre, bpm, year);
+    }
 
 }

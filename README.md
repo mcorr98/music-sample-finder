@@ -1,5 +1,7 @@
 # AI Crate Digger
 
+[![Java CI with Maven](https://github.com/mcorr98/music-sample-finder/actions/workflows/maven.yml/badge.svg?branch=main)](https://github.com/mcorr98/music-sample-finder/actions/workflows/maven.yml)
+
 This project is a personal experiment in music discovery/DJing and software development.
 It fetches data from music sources and uses AI to suggest similar tracks.
 

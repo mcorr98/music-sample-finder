@@ -20,14 +20,21 @@ public class TrackService {
 		this.tracks = new ArrayList<>(tracks);
 	}
 	
-	//Finds all tracks by a given artist
+	/**
+	 * Method which finds all tracks by a given artist 
+	 * @param artist - artist to filter by 
+	 * @return - list of Tracks by the given artist
+	 */
 	public List<Track> findByArtist(String artist) {
 		return tracks.stream()
 				.filter(t -> t.getArtist().equalsIgnoreCase(artist))
 				.collect(Collectors.toList());
 	}
 	
-	//Recommends a random track
+	/**
+	 * Method which suggests a random track from the list 
+	 * @return a track chosen at random
+	 */
 	public Track recommendRandomTrack() {
 		if (tracks.isEmpty()) return null;
 		
@@ -35,6 +42,11 @@ public class TrackService {
 		return tracks.get(rand.nextInt(tracks.size()));
 	}
 	
+	/**
+	 * Method which finds all tracks of a given genre 
+	 * @param genre - genre to filter by 
+	 * @return - list of Tracks in the given genre
+	 */
 	public List<Track> findByGenre(String genre){
 		return tracks.stream()
 				.filter(t -> t.getGenre().equalsIgnoreCase(genre))

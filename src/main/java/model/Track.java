@@ -15,7 +15,7 @@ public class Track {
 	private int year;
 
 	// Constructor
-	public Track(String artist, String title, String genre, double bpm, int year) {
+	public Track(String title, String artist, String genre, double bpm, int year) {
 		this.artist = artist;
 		this.title = title;
 		this.genre = genre;

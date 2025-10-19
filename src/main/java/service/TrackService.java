@@ -15,9 +15,15 @@ public class TrackService {
 	
 	private final List<Track> tracks; 
 	
+	
+
 	//Constructor for TrackService
 	public TrackService(List<Track> tracks) {
 		this.tracks = new ArrayList<>(tracks);
+	}
+	
+	public List<Track> getTracks() {
+		return tracks;
 	}
 	
 	/**

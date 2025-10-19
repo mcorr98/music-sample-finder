@@ -15,7 +15,7 @@ public class TrackTest {
 	
 	@Test
 	void testTrackCreationAndGetters() {
-		Track track = new Track("Aphex Twin", "Ptolemy", "Ambient", 117.65, 1991);
+		Track track = new Track("Ptolemy", "Aphex Twin","Ambient", 117.65, 1991);
 		
 		assertEquals("Aphex Twin", track.getArtist());
 		assertEquals("Ptolemy", track.getTitle());

@@ -31,16 +31,7 @@ public class TrackService {
 				.collect(Collectors.toList());
 	}
 	
-	/**
-	 * Method which suggests a random track from the list 
-	 * @return a track chosen at random
-	 */
-	public Track recommendRandomTrack() {
-		if (tracks.isEmpty()) return null;
-		
-		Random rand = new Random();
-		return tracks.get(rand.nextInt(tracks.size()));
-	}
+
 	
 	/**
 	 * Method which finds all tracks of a given genre 
@@ -52,5 +43,25 @@ public class TrackService {
 				.filter(t -> t.getGenre().equalsIgnoreCase(genre))
 				.collect(Collectors.toList());
 	}
+	
+	
+	/**
+	 * Method which suggests a random track from the list 
+	 * @return a track chosen at random
+	 */
+	public Track recommendRandomTrack() {
+		if (tracks.isEmpty()) return null;
+		
+		Random rand = new Random();
+		return tracks.get(rand.nextInt(tracks.size()));
+	}
+	
+
+	public List<Track> findByTitle(String title) {
+	    return tracks.stream()
+	        .filter(t -> t.getTitle().equalsIgnoreCase(title))
+	        .collect(Collectors.toList());
+	}
+	
 
 }

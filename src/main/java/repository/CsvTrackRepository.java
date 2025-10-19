@@ -17,13 +17,17 @@ import model.Track;
  * 
  */
 public class CsvTrackRepository implements TrackRepository {
+	
+	private final String resourceName;
 
 	/**
 	 * Constructor
 	 * 
 	 * @param filePath - path to track data resource (currently csv file)
 	 */
-	public CsvTrackRepository() {
+	public CsvTrackRepository(String resourceName) {
+		
+		this.resourceName = resourceName;
 	}
 
 	/**
@@ -34,7 +38,7 @@ public class CsvTrackRepository implements TrackRepository {
 
 		List<Track> tracks = new ArrayList<>();
 
-		try (InputStream in = getClass().getClassLoader().getResourceAsStream("tracks.csv");
+		try (InputStream in = getClass().getClassLoader().getResourceAsStream(resourceName);
 				BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
 			
 			String line;

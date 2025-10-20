@@ -41,8 +41,9 @@ public class CliRunner {
 				break;
 
 			handleCommand(input);
+			System.out.println();
 		}
-		System.out.println("Goodbye!");
+		System.out.println("Thanks for digging with Crate Digger. Goodbye!");
 		scanner.close();
 	}
 
@@ -60,6 +61,7 @@ public class CliRunner {
 	            if (parts.length < 2) {
 	                System.out.println("Expected format: artist <name>");
 	            } else {
+	            	System.out.println("Searching for artist: " + parts[1]);
 	                printResults(service.findByArtist(parts[1]));
 	            }
 	            break;
@@ -68,6 +70,7 @@ public class CliRunner {
 	            if (parts.length < 2) {
 	                System.out.println("Expected format: genre <name>");
 	            } else {
+	            	System.out.println("Searching for genre: " + parts[1]);
 	                printResults(service.findByGenre(parts[1]));
 	            }
 	            break;
@@ -76,12 +79,18 @@ public class CliRunner {
 	            if (parts.length < 2) {
 	                System.out.println("Expected format: title <name>");
 	            } else {
+	            	System.out.println("Searching for title: " + parts[1]);
 	                printResults(service.findByTitle(parts[1]));
 	            }
 	            break;
 	        }
 	        case "recommend": {
-	            System.out.println("Try this one: " + service.recommendRandomTrack());
+	        	Track rec = service.recommendRandomTrack();
+	            if (rec == null) {
+	                System.out.println("No tracks available to recommend.");
+	            } else {
+	                System.out.println("Try this one: " + rec);
+	            }
 	            break;
 	        }
 	        default:
@@ -98,9 +107,29 @@ public class CliRunner {
 	    if (tracks.isEmpty()) {
 	        System.out.println("No tracks found");
 	    } else {
-	    	for (Track track : tracks) {
-				System.out.println(track);
-			}
+	        System.out.printf("%-25s | %-40s | %-12s | %s%n",
+	                "Artist", "Title", "Genre", "Year");
+	        System.out.println("------------------------------------------------------------------------------------------------");
+	        for (Track track : tracks) {
+	            System.out.printf("%-25s | %-60s | %-15s | %4d%n",
+	                    track.getArtist(),
+	                    truncate(track.getTitle(), 40),
+	                    track.getGenre(),
+	                    track.getYear());
+	        }
 	    }
+	}
+	
+	/**
+	 * Shortens a string to fit within a maximum length.
+	 * If the string is longer than  maxLength, it is cut off
+	 * and "..."is added at the end so the user can see it was shortened.
+	 * If the string is already short enough, it is returned unchanged.
+	 * @param text the original string to check
+	 * @param maxLength the maximum number of characters allowed
+	 * @return the original string if it fits, or a shortened version with "..." appended
+	 */
+	private String truncate(String text, int maxLength) {
+	    return text.length() <= maxLength ? text : text.substring(0, maxLength - 3) + "...";
 	}
 }

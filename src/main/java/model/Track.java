@@ -4,22 +4,29 @@
 package model;
 
 /**
- * Represents a song ("track") 
+ * Represents a single piece of music (a "track").
+ * POJO used throughout the application to pass track information
+ * between the repository, service, and CLI layers.
  */
 public class Track {
 
 	private String artist;
 	private String title;
 	private String genre;
-	private double bpm;
 	private int year;
 
-	// Constructor
-	public Track(String title, String artist, String genre, double bpm, int year) {
+	 /**
+     * Creates a new Track with all its details.
+     *
+     * @param title  the title of the track
+     * @param artist the artist who created the track
+     * @param genre  the genre of the track (e.g. "Electronic", "Rock")
+     * @param year   the year the track was released (0 if unknown)
+     */
+	public Track(String title, String artist, String genre, int year) {
 		this.artist = artist;
 		this.title = title;
 		this.genre = genre;
-		this.bpm = bpm;
 		this.year = year;
 	}
 
@@ -65,19 +72,6 @@ public class Track {
 		this.genre = genre;
 	}
 
-	/**
-	 * @return the bpm
-	 */
-	public double getBpm() {
-		return bpm;
-	}
-
-	/**
-	 * @param bpm the bpm to set
-	 */
-	public void setBpm(double bpm) {
-		this.bpm = bpm;
-	}
 
 	/**
 	 * @return the year
@@ -93,9 +87,15 @@ public class Track {
 		this.year = year;
 	}
 
+	/**
+     * Returns a formatted string representation of the track,
+     * showing its title, artist, genre, and year.
+     *
+     * @return a string like "Song Title by Artist [Genre, 2020]"
+     */
 	@Override
 	public String toString() {
-		return String.format("%s by %s [%s, %.1f BPM, %d]", title, artist, genre, bpm, year);
+		return String.format("%s by %s [%s, %d]", title, artist, genre, year);
 	}
 
 }

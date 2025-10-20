@@ -31,14 +31,14 @@ Not production ready - this is a demo project to showcase problem solving, APIs,
 Java 17+ installed (java -version to check)
 Maven 3.8+ installed (mvn -v to check) 
 
-###Clone the repository
+### Clone the repository
 git clone https://github.com/mcorr98/music-sample-finder.git
 cd music-sample-finder
 
-###Run the tests
+### Run the tests
 mvn clean test
 
-###Run the CLI app
+### Run the CLI app
 mvn clean package
 java -cp target/music-sample-finder-1.0-SNAPSHOT.jar cli.App
 
